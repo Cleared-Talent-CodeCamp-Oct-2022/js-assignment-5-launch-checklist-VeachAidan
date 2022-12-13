@@ -4,13 +4,15 @@ window.addEventListener("load", function() {
 
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-   let listedPlanetsResponse;
+   let listedPlanetsResponse = myFetch();
    listedPlanetsResponse.then(function (result) {
        listedPlanets = result;
        console.log(listedPlanets);
    }).then(function () {
        console.log(listedPlanets);
        // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+       let choice = pickPlanet(listedPlanets);
+       addDestinationInfo(document, choice.name, choice.diameter, choice.star, choice.distance, choice.moons, choice.image);
    })
    
    let form = document.getElementById("launchForm");

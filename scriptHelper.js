@@ -27,19 +27,34 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+   let validPilot = validateInput(pilot);
+   let validCopilot = validateInput(copilot);
+   let validFuelLevel = validateInput(fuelLevel);
+   let validCargoLevel = validateInput(cargoLevel);
+
+   if(validPilot === "Empty" || validCopilot === "Empty" || validFuelLevel === "Empty" || validCargoLevel === "Empty"){
+    alert("All fields are required");
+   }else if(validPilot === "Is a Number" || validCopilot === "Is a Number" || validFuelLevel === "Not a Number" || validCargoLevel === "Not a Number"){
+    alert("Information entered is not valid! Verify the correct information for each field!")
+   }else{
+
+   }
    
 }
 
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        return response.json();
         });
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
+    let choice = Math.round(Math.random()*planets.length);
+    return planets[choice];
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
