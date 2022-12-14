@@ -20,9 +20,9 @@ window.addEventListener("load", function() {
    form.addEventListener("submit", function(event){
     event.preventDefault();
     let pilotInput = document.getElementById("pilotName");
-    let copilotInput = document.getElementsByName("copilotName");
-    let fuelLevelInput = document.getElementsByName("fuelLevel");
-    let cargoMassInput = document.getElementsByName("cargoMass");
+    let copilotInput = document.getElementById("copilotName");
+    let fuelLevelInput = document.getElementById("fuelLevel");
+    let cargoMassInput = document.getElementById("cargoMass");
     let list = document.getElementById("faultyItems");
     formSubmission(document, list, pilotInput.value, copilotInput.value, fuelLevelInput.value, cargoMassInput.value);
    })
